@@ -45,6 +45,19 @@ const Home = (props) => {
         <div>
            <Avatar data={state} />
             <p>{username}</p>
+            <div>
+                <h1>Chat log</h1>
+                <div id="chat">
+                  {
+                    chat.map((chat, index) => (
+                      chat.message ? 
+                      <Message chat={chat} data={state} key={index} />
+                      :
+                      <Information chat={chat} key={index} />
+                    ))
+                  }
+                </div>
+            </div>
             <form onSubmit={onMessageSubmit}>
                 <h1>Messanger</h1>
                 <div>
@@ -57,17 +70,6 @@ const Home = (props) => {
                 </div>
                 <button>Send</button>
             </form>
-            <div>
-                <h1>Chat log</h1>
-                {
-                  chat.map((chat, index) => (
-                    chat.message ? 
-                    <Message chat={chat} key={index} />
-                    :
-                    <Information chat={chat} key={index} />
-                  ))
-                }
-            </div>
         </div>
     );
 };

@@ -1,0 +1,12 @@
+form {
+    position: absolute; 
+    bottom: 0;
+}
+
+#chat {
+    overflow: hidden;
+    width: 1000px;
+    height: 600px;
+    border:1px solid grey;
+    overflow-y: scroll;
+}

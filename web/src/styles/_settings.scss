@@ -2,6 +2,13 @@
 
 $main-font: 'Public Sans', sans-serif;
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: $main-font;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
 }

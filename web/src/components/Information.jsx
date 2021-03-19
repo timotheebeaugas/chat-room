@@ -5,7 +5,7 @@ const Information = (props) => {
 
     return (
         
-        <div>
+        <div className="information">
             <p>{chat}</p>
         </div>
     );
