@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import Avatar from './Avatar';
+import React, {useEffect, useState, useRef } from 'react';
 import Information from './Information';
 import Message from './Message';
+import Avatar from './Avatar';
+import { FiSend } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
+import {motion} from "framer-motion";
 
 const Home = (props) => {
 
@@ -11,9 +14,14 @@ const Home = (props) => {
     return localeSpecificTime.replace(/:\d+ /, ' ');
   }
 
-  const { username, avatar, socket } = props
+  const { username, avatar, socket, data } = props
   const [state, setState] = useState({message: '', name: username, avatar: avatar, date: ""});
   const [chat, setChat] = useState([]);
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   useEffect(() => { 
     socket.on('message', ({name, avatar, message, date}) => {
@@ -28,6 +36,7 @@ const Home = (props) => {
     socket.on("leave", () => {
       setChat([...chat, 'An user has left the chat room'])
     });
+    scrollToBottom();
   }, [chat, socket]);
 
   const onTextChange = (e) => {
@@ -35,42 +44,82 @@ const Home = (props) => {
   };
 
     const onMessageSubmit = (e) => {
+      if(state.message.length > 0){
         e.preventDefault()
         const { name, message, avatar } = state
         socket.emit("message", { name, avatar, message, date:currentTime() })
         setState({ message: "", name, avatar, date: "" })
+      }
+    };
+
+    const variants = {
+      initial: {
+        opacity: 0,
+        x: -100,
+      },
+      visible: {
+        opacity: 1,
+        x: 0,
+      },
+      exit: {
+        opacity: 0,
+        x: 100,
+      }
     }
 
     return (
-        <div>
-           <Avatar data={state} />
-            <p>{username}</p>
+        <motion.div  
+        id="chat-window"
+        initial="initial"
+        animate="visible"
+        transition={{ duration: 0.5 }}
+        exit="exit"
+        variants={variants}
+        >
+          <div className="one-line">
+            <div id="chat-top">
+              <div className="one-line">
+                  <Avatar data={state} />
+                  <p className="username">{username}</p>
+              </div>
+              <div className="icon" onClick={data}><FiLogOut size={28} /></div> {/* ce composant ne sert à rien !!!! */}
+            </div>
+          </div>
             <div>
-                <h1>Chat log</h1>
-                <div id="chat">
+                <div id="chat-box">
                   {
                     chat.map((chat, index) => (
                       chat.message ? 
-                      <Message chat={chat} data={state} key={index} />
+                      <div>
+                        <Message chat={chat} data={state} key={index} />
+                        <div ref={messagesEndRef} />
+                      </div>
                       :
-                      <Information chat={chat} key={index} />
+                      <div>
+                        <Information chat={chat} key={index} />
+                        <div ref={messagesEndRef} />
+                      </div>
                     ))
                   }
                 </div>
             </div>
-            <form onSubmit={onMessageSubmit}>
-                <h1>Messanger</h1>
-                <div>
+            <form>
+                <div className="one-line" id="chat-bottom">
                     <textarea
                         name="message"
                         onChange={e => onTextChange(e)}
                         value={state.message}
                         label="Message"
+                        id="input-message"
+                        type="text" 
+                        placeholder="Type your message here"
+                        maxlength="300"
+                        minlength="1"
                     ></textarea>
+                  <div className="icon" onClick={onMessageSubmit}><FiSend size={28}/></div> 
                 </div>
-                <button>Send</button>
             </form>
-        </div>
+        </motion.div>
     );
 };
 

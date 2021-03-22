@@ -1,0 +1,42 @@
+#input-login{ 
+    padding: 15px;  
+    outline: none; 
+    border: 1px solid grey;   
+    border-radius: 25px; 
+    text-align: center; 
+    font-size: large;
+    @media screen and (min-width: $very-large-screen){
+        border: 1px solid white; 
+    } 
+}
+
+#input-login:focus{    
+    border: 1px solid $primary-color;
+}    
+
+#button-login{  
+    padding: 15px 15px; 
+    margin: 0px 20px; 
+    border-radius: 25px;    
+    box-shadow: 1px 1px 1px grey; 
+    font-size: large;
+    background-color: $primary-color; 
+    border: 1px solid $primary-color; 
+    color: white;
+    display: flex;
+    @media screen and (min-width: $very-large-screen){
+        color: rgb(0, 0, 0); 
+        background-color: white; 
+        border: 1px solid white;
+        box-shadow: 1px 1px 1px white; 
+    } 
+}   
+#button-login:hover{
+    background-color: $primary-color-dark;
+    border: 1px solid $primary-color-dark; 
+    cursor: pointer;  
+    @media screen and (min-width: $very-large-screen){
+        background-color: whitesmoke;
+        border: 1px solid whitesmoke; 
+    } 
+}

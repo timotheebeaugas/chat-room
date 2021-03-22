@@ -1,1 +1,13 @@
-/* uppercase */
+.avatar{
+    text-transform: uppercase;
+    color: white;
+    margin: 0px 25px;
+    border-radius: 50%;
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    span{
+        margin: auto;
+    }
+}

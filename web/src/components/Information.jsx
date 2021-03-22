@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Information = (props) => {
-    const { chat } = props;
+    const {chat} = props;
 
     return (
         
