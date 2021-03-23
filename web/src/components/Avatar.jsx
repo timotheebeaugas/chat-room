@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Avatar = (props) => {
-    const {data} = props;
+    const {state} = props;
     return (
-        <div className="avatar" style={{backgroundColor: data.avatar}}>
-            <span>{data.name.charAt(0)}</span>
-        </div>
+        <figure className="avatar" style={{backgroundColor: state.avatar}}>
+            <span>{state.name.charAt(0)}</span>
+        </figure>
     );
 };
 

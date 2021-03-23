@@ -2,31 +2,29 @@ import React from 'react';
 import Avatar from './Avatar';
 
 const Message = (props) => {
-    const {chat, data} = props;
+    const { chat, state } = props;
 
     return (
-        <section className="message">
-                <p className="date">{chat.date}</p>
-                <div className={chat.name !== data.name && "align-avatar"}>                    
-                    {chat.name !== data.name &&
-                        <div>
-                            <Avatar data={chat} />
-                        </div>
-                        
-                    }
+        <li className="message" >
+            <p className="date">{chat.date}</p>
+            <div className={chat.name !== state.name && "align-avatar"}>
+                {chat.name !== state.name &&
                     <div>
-                        {chat.name !== data.name &&
-                            <div className="username">{chat.name}</div>
-                        }
-                        <div
-                            className={chat.name === data.name ? "isAuthor" : "isNotAuthor"}
-                        >
-                            {chat.message} 
-                        </div>
+                        <Avatar state={chat} />
+                    </div>
+                }
+                <div>
+                    {chat.name !== state.name &&
+                        <div className="username">{chat.name}</div>
+                    }
+                    <div
+                        className={chat.name === state.name ? "isAuthor" : "isNotAuthor"}
+                    >
+                        {chat.message}
                     </div>
                 </div>
-            
-        </section>
+            </div>
+        </li>
     );
 };
 

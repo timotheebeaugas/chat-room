@@ -9,8 +9,6 @@ $second-color: #f3f4f5;
 $very-large-screen: 1600px;
 $large-screen: 900px;
 $medium-screen: 600px;
-$small-screen: 300px;
-
 
 html {
     height: 100%;
@@ -21,6 +19,16 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0; 
+}
+
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
 }
 
 h1{

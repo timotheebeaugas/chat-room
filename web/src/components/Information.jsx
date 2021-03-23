@@ -4,10 +4,9 @@ const Information = (props) => {
     const {chat} = props;
 
     return (
-        
-        <div className="information">
+        <li className="information">
             <p>{chat}</p>
-        </div>
+        </li>
     );
 };
 
