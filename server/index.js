@@ -12,9 +12,6 @@ io.on('connection', socket => {
     socket.on('log in', (username) => {
         io.emit('log in', username)
     })
-    socket.on('disconnect', () => {
-        io.emit('leave')
-    })
     socket.on('log out', (username) => {
         io.emit('log out', username)
     })

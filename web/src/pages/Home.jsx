@@ -6,6 +6,7 @@ import { FiSend } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import { motion } from "framer-motion";
 import io from 'socket.io-client';
+
 const Home = (props) => {
 
   const { username, avatar, socket, logout } = props
@@ -29,18 +30,18 @@ const Home = (props) => {
 
     socket.on('message', ({ name, avatar, message, date }) => {
       setChat([...chat, { name, avatar, message, date }])
+      socket.disconnect();
     })
     socket.on('log in', (user) => {
       setChat([...chat, user + ' is connected'])
+      socket.disconnect();
     });
     socket.on('log out', (user) => {
       setChat([...chat, user + ' is disconnected'])
-    });
-    socket.on("leave", () => {
-      setChat([...chat, 'An user has left the chat room'])
-    });
+      socket.disconnect();
+    }); 
     scrollToBottom();
-    return () => socket.close();
+    
   }, [chat, socket]);
 
   const onTextChange = (e) => {
