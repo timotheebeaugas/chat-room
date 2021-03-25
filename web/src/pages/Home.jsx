@@ -100,14 +100,12 @@ const Home = (props) => {
                 {
                   chat.map((chat, index) => (
                     chat.message ?
-                      <div key={index}>
+                      <div key={index} ref={messagesEndRef}>
                         <Message chat={chat} state={state} />
-                        <div ref={messagesEndRef} />
                       </div>
                       :
-                      <div key={index}>
+                      <div key={index} ref={messagesEndRef}>
                         <Information chat={chat} />
-                        <div ref={messagesEndRef} />
                       </div>
                   ))
                 }
