@@ -9,7 +9,7 @@ const Message = (props) => {
             <p className="date">{chat.date}</p>
             <div className={chat.name !== state.name && "align-avatar"}>
                 {chat.name !== state.name &&
-                    <div>
+                    <div className="message-avatar">
                         <Avatar state={chat} />
                     </div>
                 }

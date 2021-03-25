@@ -38,3 +38,9 @@
     display: flex;
     align-items: flex-end; 
 } 
+
+.message-avatar{
+    @media screen and (max-width: $medium-screen){
+        display: none; 
+    }
+}
