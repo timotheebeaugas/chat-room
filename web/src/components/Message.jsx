@@ -13,7 +13,7 @@ const Message = (props) => {
                         <Avatar state={chat} />
                     </div>
                 }
-                <div>
+                <div className="message-width">
                     {chat.name !== state.name &&
                         <div className="username">{chat.name}</div>
                     }
