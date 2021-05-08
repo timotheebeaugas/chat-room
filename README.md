@@ -1,9 +1,9 @@
 # Chat app 
 Small chat app to discuss without registration.  
-Using Node `v13.14.0`
 
 ## Server folder
-Simple node server with a web socket available on the port 4000: http://localhost:4000/  
+Simple node server with a web socket available on the port 4000: http://localhost:4000/   
+Using Node `v13.14.0`
 
 ### Technologies used
 * Node.js
