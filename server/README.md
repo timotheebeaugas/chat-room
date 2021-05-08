@@ -4,5 +4,5 @@ npm install
 ```
 ### Run server 
 ```
-node server
+npm start
 ```
