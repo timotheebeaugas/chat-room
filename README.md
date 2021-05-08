@@ -1,5 +1,5 @@
 # Chat app 
-Small instant chat app to chat without registration.  
+Small chat app to discuss without registration.  
 Using Node `v13.14.0`
 
 ## Server folder
