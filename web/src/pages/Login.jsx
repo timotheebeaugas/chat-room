@@ -34,7 +34,7 @@ const Login = (props) => {
                 >   
                     <h1>Chat room</h1>
                     <h2>Simple chat app. Choose an username and come in. Open multiple tabs to simulate a group chat.</h2>
-                    <div className="one-line">
+                    <div id="login-button-alignment">
                         <input
                             id="input-login"
                             value={username}
